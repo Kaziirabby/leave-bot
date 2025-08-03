@@ -6,7 +6,21 @@ BOT_TOKEN = '8240597137:AAF414fTbrsAFtJIhUmDsRNjR-m4-uYz_Xc'
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "📝 Welcome to the Leave Request Bot!\n\nPlease send your leave request in this format:\nUserName: \nDate: YYYY-MM-DD\nReason: ...")
+        "📝 *Welcome to the NOC Leave Request Bot*\n"
+        "You can request:\n\n"
+        "📅 *Leave* — use this format:\n"
+        "```\n"
+        "Date: YYYY-MM-DD\n"
+        "Reason: Your reason here\n"
+        "```\n\n"
+        "🔁 *Swap Duty* — use this format:\n"
+        "```\n"
+        "Swap: YYYY-MM-DD\n"
+        "With: @username\n"
+        "Reason: Your reason here\n"
+        "```",
+        parse_mode='Markdown'
+    )
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.message.from_user
@@ -34,4 +48,5 @@ if __name__ == '__main__':
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
     print("✅ Bot is running. Press Ctrl+C to stop.")
     app.run_polling()
+
 
