@@ -21,6 +21,12 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("✅ Your leave request has been sent.")
     else:
         await update.message.reply_text("❗ Please follow the format:\nDate: YYYY-MM-DD\nReason: ...")
+        if "swap" in text.lower() and "with" in text.lower():
+    await context.bot.send_message(
+        chat_id=ADMIN_CHAT_ID,
+        text=f"🔁 Swap request from {user.first_name} (@{user.username}):\n{text}"
+    )
+    await update.message.reply_text("🔁 Your swap request has been sent.")
 
 if __name__ == '__main__':
     app = ApplicationBuilder().token(BOT_TOKEN).build()
@@ -28,3 +34,4 @@ if __name__ == '__main__':
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
     print("✅ Bot is running. Press Ctrl+C to stop.")
     app.run_polling()
+
