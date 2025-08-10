@@ -4,7 +4,7 @@ import os
 
 # Use environment variables or hardcode for local testing
 ADMIN_CHAT_ID = 767044746
-BOT_TOKEN = '8240597137:AAF414fTbrsAFtJIhUmDsRNjR-m4-uYz_Xc'
+BOT_TOKEN = '8240597137:AAFs5_FamAY46SgC6bZuCKgT-5N7JkwcaTk'
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
@@ -59,3 +59,4 @@ if __name__ == '__main__':
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
     print("✅ Bot is running. Press Ctrl+C to stop.")
     app.run_polling()
+
